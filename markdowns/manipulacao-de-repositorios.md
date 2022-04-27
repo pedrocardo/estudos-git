@@ -14,7 +14,6 @@ git comando [placeholder]
 
 - [Comando _add_](#comando-add)
 - [Comando _branch_](#comando-branch)
-- [Comando _checkout_](#comando-checkout)
 - [Comando _clone_](#comando-clone)
 - [Comando _commit_](#comando-commit)
 - [Comando _config_](#comando-config)
@@ -29,6 +28,7 @@ git comando [placeholder]
 - [Comando _revert_](#comando-revert)
 - [Comando _show_](#comando-show)
 - [Comando _status_](#comando-status)
+- [Comando _switch_](#comando-switch)
 
 ### Comando _add_
 
@@ -40,11 +40,15 @@ git add [arquivo]
 
 ### Comando _branch_
 
-Comando _branch_ exibe a lista de _branches_ do repositório ou cria uma nova com o nome especificado.
+Comando _branch_ exibe a lista de _branches_ do repositório.
 
 ```
 git branch
+```
 
+Comando _branch_ cria uma _branch_ com o nome especificado.
+
+```
 git branch [branch]
 ```
 
@@ -72,20 +76,6 @@ Comando _branch_ com _--no-merged_ exibe as _branches_ que não estão mescladas
 git branch --no-merged
 ```
 
-### Comando _checkout_
-
-Comando _checkout_ muda o repositório para a _branch_ especificada.
-
-```
-git checkout [branch]
-```
-
-Comando _checkout_ modifica o conteúdo e estado de um ou mais arquivos _modified_ para o estado _unmodified_.
-
-```
-git checkout [arquivo]
-```
-
 ### Comando _clone_
 
 Comando _clone_ baixa um repositório remoto.
@@ -102,6 +92,14 @@ Comando _commit_ salva os arquivos _staged_ em um novo _commit_ do repositório.
 git commit -m "[mensagem]"
 ```
 
+Comando _commit_ com _-a_ ou -_am_ salva todos os arquivos _modified_ ou _deleted_ em um novo _commit_ do repositório.
+
+```
+git commit -a -m "[mensagem]"
+
+git commit -am "[mensagem]"
+```
+
 Comando _commit_ com _--amend_ salva os arquivos _staged_ no último _commit_ do repositório.
 
 ```
@@ -112,16 +110,9 @@ git commit --amend -m "[mensagem]"
 git commit --amend --no-edit
 ```
 
-Comando _commit_ com _-a_ ou -_am_ salva todos os arquivos _modified_ em um novo _commit_ do repositório.
-
-```
-git commit -a -m "[mensagem]"
-git commit -am "[mensagem]"
-```
-
 ### Comando _config_
 
-Comando _config_ modifica ou acessa variáveis locais ou globais.
+Comando _config_ acessa ou modifica variáveis.
 
 Comando _config_ com _--global_ _user.name_ modifica o valor da variável global que referencia o nome do usuário.
 
@@ -209,7 +200,7 @@ Comando _remote_ com _add_ adiciona um nome para referenciar um repositório rem
 git remote add [repositório remoto] [URL repositório remoto]
 ```
 
-Comando _remote_ com _-v_ exibe uma lista dos repositórios remotos salvos.
+Comando _remote_ com _-v_ exibe uma lista com os repositórios remotos salvos.
 
 ```
 git remote -v
@@ -217,13 +208,13 @@ git remote -v
 
 ### Comando _restore_
 
-Comando _restore_ retorna um ou mais arquivos _modified_ ou _deleted_ para o estado _unmodified_.
+Comando _restore_ modifica o estado e o conteúdo de um ou mais arquivos _modified_ ou _deleted_ para _unmodified_.
 
 ```
 git restore [arquivo]
 ```
 
-Comando _restore_ com _--staged_ retorna um ou mais arquivos _staged_ para seu estado anterior.
+Comando _restore_ com _--staged_ modifica o estado de um ou mais arquivos _staged_ para _modified_, _deleted_ ou _untracked_.
 
 ```
 git restore --staged [arquivo]
@@ -231,9 +222,9 @@ git restore --staged [arquivo]
 
 ### Comando _revert_
 
-Comando _revert_ retorna a versão do repositório para a do _commit_ especificado.
+Comando _revert_ modifica o conteúdo do repositório para o _commit_ especificado.
 
-Essa reversão criará um novo _commit_ e não apagará os anteriores.
+Essa reversão criará um _commit_ e não apagará os anteriores.
 
 ```
 git revert [commit]
@@ -245,20 +236,36 @@ Comando _show_ exibe informações sobre o último _commit_ ou um outro especifi
 
 ```
 git show
+
 git show [commit]
 ```
 
 ### Comando _status_
 
-Comando _status_ exibe o estado do repositório no momento dComando.
+Comando _status_ exibe o estado do repositório no momento do comando.
 
 ```
 git status
 ```
 
-Comando _status_ com _--short_ ou _s_ exibe o estado do repositório no momento do comando e de forma simplificada.
+Comando _status_ com _--short_ ou _-s_ exibe simplificadamente o estado do repositório no momento do comando.
 
 ```
 git status --short
+
 git status -s
+```
+
+### Comando _switch_
+
+Comando _switch_ modifica o repositório para a _branch_ especificada.
+
+```
+git switch [branch]
+```
+
+Comando _switch_ com _-c_ cria uma _branch_ com o nome especificado e modifica o repositório.
+
+```
+git switch -c [branch]
 ```
